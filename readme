@@ -1,0 +1,46 @@
+# Sistema de Gestão de Funcionários
+
+Este projeto implementa um sistema básico de gestão de funcionários com um banco de dados MySQL. O sistema permite gerenciar departamentos e funcionários, incluindo operações de inserção, consulta, atualização e exclusão.
+
+## Estrutura do Banco de Dados
+
+O banco de dados `gestaofuncionarios` contém as seguintes tabelas:
+
+1. **departamento**
+   - `iddepartamento` (INT, chave primária)
+   - `nome` (VARCHAR)
+
+2. **funcionarios**
+   - `idfuncionario` (INT, chave primária)
+   - `nome` (VARCHAR)
+   - `cargo` (VARCHAR)
+   - `salario` (DECIMAL)
+   - `iddepartamento` (INT, chave estrangeira)
+
+## Funcionalidades
+
+- Criação de departamentos.
+- Criação de funcionários associados a departamentos.
+- Consultas para exibir departamentos e funcionários.
+- Atualizações de salário e cargo dos funcionários.
+- Exclusão de funcionários e departamentos.
+
+## Como Usar
+
+1. Clone este repositório.
+2. Certifique-se de ter o MySQL instalado.
+3. Importe o script SQL para o seu servidor MySQL.
+4. Execute as consultas para gerenciar os dados conforme desejado.
+
+## Requisitos
+
+- MySQL 5.7 ou superior
+- Ferramenta de gerenciamento de banco de dados (ex: MySQL Workbench)
+
+## Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir um problema ou enviar um pull request.
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
