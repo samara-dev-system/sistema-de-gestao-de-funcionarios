@@ -1,0 +1,72 @@
+-- Passo 1: Criar o Banco de Dados
+DROP DATABASE IF EXISTS gestaofuncionarios;
+CREATE DATABASE gestaofuncionarios;
+USE gestaofuncionarios;
+
+-- Passo 2: Criar a Tabela `departamento`
+CREATE TABLE departamento (
+    iddepartamento INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL
+);
+
+-- Passo 3: Criar a Tabela `funcionarios`
+CREATE TABLE funcionarios (
+    idfuncionario INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cargo VARCHAR(50) NOT NULL,
+    salario DECIMAL(10, 2) NOT NULL,
+    iddepartamento INT,
+    FOREIGN KEY (iddepartamento) REFERENCES departamento(iddepartamento) ON DELETE CASCADE
+);
+
+-- Passo 4: Inserir Dados Fictícios na Tabela `departamento`
+INSERT INTO departamento (nome)
+VALUES 
+('Recursos Humanos'),
+('Financeiro'),
+('TI'),
+('Marketing');
+
+-- Passo 5: Inserir Dados Fictícios na Tabela `funcionarios`
+INSERT INTO funcionarios (nome, cargo, salario, iddepartamento)
+VALUES 
+('João Silva', 'Gerente de TI', 8000.00, 3),
+('Maria Oliveira', 'Analista de Recursos Humanos', 5000.00, 1),
+('Carlos Pereira', 'Assistente Financeiro', 3000.00, 2),
+('Ana Santos', 'Coordenadora de Marketing', 7000.00, 4),
+('Fernanda Lima', 'Desenvolvedora', 6000.00, 3);
+
+-- Passo 6: Consultas
+
+-- 6.1: Exibir todos os departamentos
+SELECT * FROM departamento;
+
+-- 6.2: Exibir todos os funcionários com informações do departamento
+SELECT f.idfuncionario, f.nome, f.cargo, f.salario, d.nome AS departamento
+FROM funcionarios f
+JOIN departamento d ON f.iddepartamento = d.iddepartamento;
+
+-- 6.3: Consultar funcionários com salário acima de 5000
+SELECT * FROM funcionarios WHERE salario > 5000;
+
+-- Passo 7: Atualizações
+
+-- 7.1: Atualizar o salário de um funcionário
+UPDATE funcionarios
+SET salario = 8500.00
+WHERE idfuncionario = 1;
+
+-- 7.2: Atualizar o cargo de um funcionário
+UPDATE funcionarios
+SET cargo = 'Gerente de Marketing'
+WHERE idfuncionario = 4;
+
+-- Passo 8: Exclusões
+
+-- 8.1: Excluir um funcionário
+DELETE FROM funcionarios
+WHERE idfuncionario = 3;
+
+-- 8.2: Excluir um departamento (isso também excluirá todos os funcionários associados)
+DELETE FROM departamento
+WHERE iddepartamento = 2;  -- Exclui o departamento 'Financeiro'
