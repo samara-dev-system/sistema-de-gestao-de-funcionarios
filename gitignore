@@ -1,0 +1,16 @@
+# Ignorar arquivos de configuração do MySQL
+*.sql
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar pastas de backup
+backup/
+
+# Ignorar arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar outros arquivos temporários
+*.tmp
+*.temp
